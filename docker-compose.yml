@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+    php:
+        build:
+            context: ./build
+            dockerfile: Dockerfile.dev
+        ports:
+            - '80:80'
+        depends_on:
+            - mysql
+        volumes:
+            - ./:/var/www/html
+    mysql:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        volumes:
+            - ~/mysql_docker/constance:/var/lib/mysql
+            - "./build/backup-banco-dados:/database"
+        environment:
+            MYSQL_DATABASE: projeto
+            MYSQL_ROOT_PASSWORD: root
+volumes:
+    data:
