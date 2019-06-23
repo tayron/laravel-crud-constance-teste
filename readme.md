@@ -30,3 +30,6 @@ Você poderá utilizar qualquer framework para desenvolver o projeto, lembrando 
 
 ## Prazo
 O deadline será até  25/06 (terça-feira), e qualquer dúvida pode enviada respondendo este email.
+
+## Dependência usado e carregado via composer
+1. http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
