@@ -85,11 +85,12 @@ Migrated:  2019_06_22_204222_create_users_table
 
 
 ### Premissas atendidas
-1. Dever ter alguma alguma dependência via composer;
+
+#### Dever ter alguma alguma dependência via composer;
 
 Foi atendida usando a biblioteca: http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
 
-2. Passar no php code sniffer com PSR-2: Coding Style Guide;
+#### Passar no php code sniffer com PSR-2: Coding Style Guide;
 
 Para validar se os controllers e a Trait estão dentro dentro das definições da psr2,
 deve-se acessar o container php e instalar CodeSniffer
@@ -114,10 +115,11 @@ root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Traits/
 Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 ```
 
-3. Teste unitário de pelo menos 3 funções;
+#### Teste unitário de pelo menos 3 funções;
 
 
-4. Deploy em um repositório do github ou do bitbucket.
+#### Deploy em um repositório do github ou do bitbucket;
+
 Foi atendido com código versionado no GitHub: https://github.com/tayron/constance-teste
 
 
