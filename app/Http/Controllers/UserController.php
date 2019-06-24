@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\User;
-use App\Http\Models\Profile;
+use App\Models\User;
+use App\Models\Profile;
 use App\Http\Traits\PhotoManipulation;
 
 class UserController extends Controller
