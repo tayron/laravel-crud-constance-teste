@@ -31,8 +31,6 @@ Você poderá utilizar qualquer framework para desenvolver o projeto, lembrando 
 ## Prazo
 O deadline será até  25/06 (terça-feira), e qualquer dúvida pode enviada respondendo este email.
 
-## Dependência usado e carregado via composer
-1. http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
 
 ## Configuração do projeto para execução
 
@@ -79,7 +77,16 @@ Migrated:  2019_06_22_204222_create_users_table
 ```http://localhost```
 
 
-### PHP CodeSniffer
+
+```
+
+
+### Premissas atendidas
+1. Dever ter alguma alguma dependência via composer;
+Foi atendida usando a biblioteca: http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
+
+2. Passar no php code sniffer com PSR-2: Coding Style Guide;
+
 Para validar se os controllers e a Trait estão dentro dentro das definições da psr2,
 deve-se acessar o container php e instalar CodeSniffer
 
@@ -101,9 +108,12 @@ root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Control
 Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php
 Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
-```
 
 
+3. Teste unitário de pelo menos 3 funções;
 
+
+4. Deploy em um repositório do github ou do bitbucket.
+Foi atendido com código versionado no GitHub
 
 
