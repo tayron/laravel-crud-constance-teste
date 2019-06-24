@@ -8,22 +8,22 @@ class Profile extends ApplicationModel
 {
     protected $table = 'profiles';
 
-    public function getName()
+    public function getName() : string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 
-    public function getDescription()
+    public function getDescription() : string
     {
-        return $this->description;
+        return (string) $this->description;
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }

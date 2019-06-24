@@ -8,62 +8,62 @@ class User extends ApplicationModel
 {
     protected $table = 'users';
 
-    public function getProfile()
+    public function getProfile() : int
     {
-        return $this->profile_id;
+        return (int) $this->profile_id;
     }
 
-    public function getName()
+    public function getName() : string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 
-    public function getEmail()
+    public function getEmail() : string
     {
-        return $this->email;
+        return (string) $this->email;
     }
 
-    public function getPhone()
+    public function getPhone() : string
     {
-        return $this->phone;
+        return (string) $this->phone;
     }
 
-    public function getBirthdate()
+    public function getBirthdate() : \DateTime
     {
         return new \DateTime($this->birthdate);
     }
 
-    public function getOccupation()
+    public function getOccupation() : string
     {
         return $this->occupation;
     }
 
-    public function getSalary()
+    public function getSalary() : string
     {
-        return $this->salary;
+        return (string) $this->salary;
     }
 
-    public function getPhoto()
+    public function getPhoto() : string
     {
-        return $this->photo;
+        return (string) $this->photo;
     }
 
-    public function setProfile($profile)
+    public function setProfile(int $idProfile)
     {
-        $this->profile_id = $profile;
+        $this->profile_id = $idProfile;
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    public function setPhone($phone)
+    public function setPhone(string $phone)
     {
         $this->phone = $phone;
     }
@@ -73,19 +73,19 @@ class User extends ApplicationModel
         $this->birthdate = $birthdate;
     }
 
-    public function setOccupation($occupation)
+    public function setOccupation(string $occupation)
     {
         $this->occupation = $occupation;
     }
 
-    public function setSalary($salary)
+    public function setSalary(string $salary)
     {
         $this->salary = str_replace(['.', ','], ['', '.'], $salary);
     }
 
-    public function setPhoto($photo)
+    public function setPhoto(string $namePhoto)
     {
-        $this->photo = $photo;
+        $this->photo = $namePhoto;
     }
 
     public function profile()
