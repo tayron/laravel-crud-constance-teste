@@ -26,26 +26,26 @@
                 <tbody>
                     @foreach($listUsers as $user)
                     <tr>
-                        <td>{{$user->id}}</td>  
+                        <td>{{$user->getId()}}</td>  
                         <td>
-                            <img src="{{url("storage/upload/img/users/{$user->photo}")}}" alt="{{$user->name}}" class="img img-fluid" />
+                            <img src="{{url("storage/upload/img/users/{$user->photo}")}}" alt="{{$user->getName()}}" class="img img-fluid" />
                         </td>                        
-                        <td>{{$user->name}}</td>                                                            
-                        <td>{{$user->occupation}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->phone}}</td>
+                        <td>{{$user->getName()}}</td>                                                            
+                        <td>{{$user->getOccupation()}}</td>
+                        <td>{{$user->getEmail()}}</td>
+                        <td>{{$user->getPhone()}}</td>
                         <td class="actions">
                             <div class="btn-group">
-                                <a href="{{url('/usuario/editar/' . $user->id)}}" class="btn btn-info btn-sm" title="Editar">
+                                <a href="{{url('/usuario/editar/' . $user->getId())}}" class="btn btn-info btn-sm" title="Editar">
                                     Editar
                                 </a>
-                                <form name="post_{{$user->id}}" style="display:none;" method="post" action="{{url('/usuario/excluir/')}}">
+                                <form name="post_{{$user->getId()}}" style="display:none;" method="post" action="{{url('/usuario/excluir/')}}">
                                     {{csrf_field()}}
-                                    <input type="hidden" name="id" value="{{$user->id}}">
+                                    <input type="hidden" name="id" value="{{$user->getId()}}">
                                 </form>
                                 
-                                <a href="#" class="btn btn-danger btn-sm" title="Excluir" onclick="if (confirm('Tem certeza que deseja excluir o registro # {{$user->id}}?')) {
-                                        document.post_{{$user->id}}.submit();
+                                <a href="#" class="btn btn-danger btn-sm" title="Excluir" onclick="if (confirm('Tem certeza que deseja excluir o registro # {{$user->getId()}}?')) {
+                                        document.post_{{$user->getId()}}.submit();
                                             }
                                             event.returnValue = false;
                                             return false;">

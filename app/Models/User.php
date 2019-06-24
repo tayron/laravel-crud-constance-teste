@@ -30,7 +30,7 @@ class User extends ApplicationModel
 
     public function getBirthdate()
     {
-        return $this->birthdate;
+        return new \DateTime($this->birthdate);
     }
 
     public function getOccupation()

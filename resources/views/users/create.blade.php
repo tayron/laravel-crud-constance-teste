@@ -32,10 +32,10 @@
                         <select id="profile_id" name="profile_id" class="form-control">
                             <option value="">Selecione</option>  
                             @foreach($listProfiles as $profile)
-                                @if($profile->id == old('profile_id'))
-                                <option selected value="{{$profile->id}}">{{$profile->name}}</option>  
+                                @if($profile->getId() == old('profile_id'))
+                                <option selected value="{{$profile->getId()}}">{{$profile->getName()}}</option>  
                                 @else
-                                <option value="{{$profile->id}}">{{$profile->name}}</option>  
+                                <option value="{{$profile->getId()}}">{{$profile->getName()}}</option>  
                                 @endif
                             @endforeach
                         </select>

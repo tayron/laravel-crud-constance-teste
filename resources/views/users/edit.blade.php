@@ -21,13 +21,13 @@
         @endif
         <form method="POST" action="{{ route('usuario_atualizar') }}" enctype="multipart/form-data">
             {{csrf_field()}}
-            <input type="hidden" name="id" value="{{$user->id}}" />
-            <input type="hidden" name="name_photo_old" value="{{$user->photo}}" />            
+            <input type="hidden" name="id" value="{{$user->getId()}}" />
+            <input type="hidden" name="name_photo_old" value="{{$user->getPhoto()}}" />            
 
             <div class="row">
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">
-                        <img src="{{url("storage/upload/img/users/{$user->photo}")}}" alt="{{$user->name}}" class="img" />
+                        <img src="{{url("storage/upload/img/users/{$user->photo}")}}" alt="{{$user->getName()}}" class="img" />
                     </div>                    
                 </div>
                 
@@ -37,13 +37,13 @@
                         <select id="profile_id" name="profile_id" class="form-control">
                             <option value="">Selecione</option>  
                             @foreach($listProfiles as $profile)
-                            @if($profile->id == old('profile_id'))
-                            <option selected value="{{$profile->id}}">{{$profile->name}}</option>  
-                            @elseif($profile->id == $user->profile_id)
-                            <option selected value="{{$profile->id}}">{{$profile->name}}</option>  
-                            @else
-                            <option value="{{$profile->id}}">{{$profile->name}}</option>  
-                            @endif
+                                @if($profile->getId() == old('profile_id'))
+                                <option selected value="{{$profile->getId()}}">{{$profile->getName()}}</option>  
+                                @elseif($profile->getId() == $user->getProfile())
+                                <option selected value="{{$profile->getId()}}">{{$profile->getName()}}</option>  
+                                @else
+                                <option value="{{$profile->getId()}}">{{$profile->getName()}}</option>  
+                                @endif
                             @endforeach
                         </select>
                     </div>                    
@@ -52,42 +52,42 @@
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="name">Nome do Usuário:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" placeholder="Informe aqui o nome do usuário"/>
+                        <input type="text" class="form-control" id="name" name="name" value="{{$user->getName()}}" placeholder="Informe aqui o nome do usuário"/>
                     </div>                    
                 </div>
                 
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}" placeholder="usuario@dominio.com.br"/>
+                        <input type="text" class="form-control" id="email" name="email" value="{{$user->getEmail()}}" placeholder="usuario@dominio.com.br"/>
                     </div>                    
                 </div>
                 
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="birthdate">Data de aniversário:</label>
-                        <input type="text" class="form-control" id="birthdate" name="birthdate" value="{{(new \DateTime($user->birthdate))->format('d/m/Y')}}" placeholder="dd/mm/YYYY"/>
+                        <input type="text" class="form-control" id="birthdate" name="birthdate" value="{{$user->getBirthdate()->format('d/m/Y')}}" placeholder="dd/mm/YYYY"/>
                     </div>                     
                 </div>
                 
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="occupation">Cargo:</label>
-                        <input type="text" class="form-control" id="occupation" name="occupation" value="{{$user->occupation}}" placeholder="Informe aqui a profissão do usuário"/>
+                        <input type="text" class="form-control" id="occupation" name="occupation" value="{{$user->getOccupation()}}" placeholder="Informe aqui a profissão do usuário"/>
                     </div>                    
                 </div>
                 
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="salary">Salário:</label>
-                        <input type="text" class="form-control" id="salary" name="salary" value="{{number_format($user->salary, 2, ',', '.')}}" placeholder="0.000,00"/>
+                        <input type="text" class="form-control" id="salary" name="salary" value="{{number_format($user->getSalary(), 2, ',', '.')}}" placeholder="0.000,00"/>
                     </div>                    
                 </div>
                 
                 <div class="col-xl-4 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="phone">Telefone:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{$user->phone}}" placeholder="(31) 1234-4567"/>
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{$user->getPhone()}}" placeholder="(31) 1234-4567"/>
                     </div>                      
                 </div>     
                 
