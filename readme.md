@@ -33,3 +33,77 @@ O deadline será até  25/06 (terça-feira), e qualquer dúvida pode enviada res
 
 ## Dependência usado e carregado via composer
 1. http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
+
+## Configuração do projeto para execução
+
+### DOCKER
+O projeto utiliza Docker e Docker Compose para criação do ambiente de desenvolvimento, caso não tenha instalado, segue o link para instalação:
+1. https://docs.docker.com/v17.12/install/
+2. https://docs.docker.com/compose/install/
+
+### Build e execução dos containers Docker
+Observação: A configuração do docker-compose.yml foi configurado para ser executado 
+em uma máquina linux, caso use Windows, talvez tenha que fazer alguns ajustes.
+
+```docker-compose up --build -d```
+
+### Para ver os containers rodando
+```docker ps```
+
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        crud_php_1
+aff4e01cc9e7        mysql:5.7           "docker-entrypoint.s…"   39 hours ago        Up 15 minutes       0.0.0.0:3306->3306/tcp, 33060/tcp   crud_mysql_1
+```
+
+### Acessar container PHP para configuração do projeto
+```docker exec -it crud_php_1 bash```
+
+### Instalar as dependências do projeto
+```composer install -vv```
+
+### Criar as tabelas do banco de dado
+```php artisan migrate```
+
+A saída do comando acima deverá ser
+```
+Migration table created successfully.
+Migrating: 2019_06_22_000000_create_profiles_table
+Migrated:  2019_06_22_000000_create_profiles_table
+Migrating: 2019_06_22_204222_create_users_table
+Migrated:  2019_06_22_204222_create_users_table
+```
+
+
+### Acessar projeto pelo Browser
+```http://localhost```
+
+
+### PHP CodeSniffer
+Para validar se os controllers e a Trait estão dentro dentro das definições da psr2,
+deve-se acessar o container php e instalar CodeSniffer
+
+1. ```curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar```
+2. ```pear install PHP_CodeSniffer```
+3. ```composer global require "squizlabs/php_codesniffer=*"```
+
+Agora em seguida vamos validar as classes com os comandos:
+
+1. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php```
+2. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php```
+3. ```php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php```
+
+A saída dos comandos acima deverá ser:
+```
+root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+```
+
+
+
+
+
