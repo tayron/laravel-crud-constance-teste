@@ -76,6 +76,13 @@ Migrating: 2019_06_22_204222_create_users_table
 Migrated:  2019_06_22_204222_create_users_table
 ```
 
+### Executar comando para permitir ao Laravel carregar imagem do diretório storage quando for feito upload
+``` php artisan storage:link ```
+
+A  saída do comando acima deverá ser
+```
+The [public/storage] directory has been linked.
+```
 
 ### Acessar projeto pelo Browser
 ```http://localhost```

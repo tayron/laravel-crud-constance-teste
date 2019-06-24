@@ -116,7 +116,7 @@ class ProfileController extends Controller
     private function executeDataValidateOnUpdate(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:profiles|max:255',
+            'name' => 'required|max:255',
             'description' => 'required|max:255'
         ], [
             'name.required' => 'O campo Nome do Perfil não pode ser vazio',
