@@ -43,17 +43,17 @@ class ProfileController extends Controller
     {
         try {
             $profile = new Profile();
-            $profile->name = $request->get('name');
-            $profile->description = $request->get('description');
-            $profile->created_at = new \DateTime();
-            $profile->updated_at = new \DateTime();
+            $profile->setName($request->get('name'));
+            $profile->setDescription($request->get('description'));
+            $profile->setCreatedAt(new \DateTime());
+            $profile->setUpdatedAt(new \DateTime());
             $profile->save();
 
             return redirect('/perfis')
                 ->with('success', 'Registro criado com sucesso!');
         } catch (\Exception $ex) {
             return redirect('/perfil/novo')
-                ->with('error', 'Não foi possível criar o registro!')
+                ->with('error', 'Não foi possível criar o registro!' . $ex->getMessage())
                 ->withInput($request->input());
         }
     }
@@ -84,9 +84,9 @@ class ProfileController extends Controller
         try {
             $profiles = new Profile();
             $profile = $profiles->find($request->input('id'));
-            $profile->name = $request->get('name');
-            $profile->description = $request->get('description');
-            $profile->updated_at = new \DateTime();
+            $profile->setName($request->get('name'));
+            $profile->setDescription($request->get('description'));
+            $profile->setUpdatedAt(new \DateTime());
             $profile->save();
 
             return redirect('/perfis')

@@ -71,16 +71,16 @@ class UserController extends Controller
             $photoName = $this->executeUploadPhoto($request);
 
             $user = new User();
-            $user->profile_id = $request->get('profile_id');
-            $user->name = $request->get('name');
-            $user->email = $request->get('email');
-            $user->phone = $request->get('phone');
-            $user->birthdate = \DateTime::createFromFormat('d/m/Y', $request->get('birthdate'));
-            $user->occupation = $request->get('occupation');
-            $user->salary = $this->formatSalaryToDatabase($request->get('salary'));
-            $user->photo = $photoName;
-            $user->created_at = new \DateTime();
-            $user->updated_at = new \DateTime();
+            $user->setProfile($request->get('profile_id'));
+            $user->setName($request->get('name'));
+            $user->setEmail($request->get('email'));
+            $user->setPhone($request->get('phone'));
+            $user->setBirthdate(\DateTime::createFromFormat('d/m/Y', $request->get('birthdate')));
+            $user->setOccupation($request->get('occupation'));
+            $user->setSalary($request->get('salary'));
+            $user->setPhoto($photoName);
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
             $user->save();
 
             return redirect('/usuarios')
@@ -93,11 +93,6 @@ class UserController extends Controller
                 ->with('error', 'Não foi possível criar o registro!')
                 ->withInput($request->input());
         }
-    }
-
-    private function formatSalaryToDatabase($price)
-    {
-        return str_replace(['.', ','], ['', '.'], $price);
     }
 
     /**
@@ -138,15 +133,15 @@ class UserController extends Controller
 
             $users = new User();
             $user = $users->find($request->input('id'));
-            $user->profile_id = $request->get('profile_id');
-            $user->name = $request->get('name');
-            $user->email = $request->get('email');
-            $user->phone = $request->get('phone');
-            $user->birthdate = \DateTime::createFromFormat('d/m/Y', $request->get('birthdate'));
-            $user->occupation = $request->get('occupation');
-            $user->salary = $this->formatSalaryToDatabase($request->get('salary'));
-            $user->photo = $namePhotoFile;
-            $user->updated_at = new \DateTime();
+            $user->setProfile($request->get('profile_id'));
+            $user->setName($request->get('name'));
+            $user->setEmail($request->get('email'));
+            $user->setPhone($request->get('phone'));
+            $user->setBirthdate(\DateTime::createFromFormat('d/m/Y', $request->get('birthdate')));
+            $user->setOccupation($request->get('occupation'));
+            $user->setSalary($request->get('salary'));
+            $user->setPhoto($namePhotoFile);
+            $user->setUpdatedAt(new \DateTime());
             $user->save();
 
             return redirect('/usuarios')
