@@ -50,12 +50,12 @@ em uma máquina linux, caso use Windows, talvez tenha que fazer alguns ajustes.
 
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
-28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        crud_php_1
+28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        constanceteste_php_1
 aff4e01cc9e7        mysql:5.7           "docker-entrypoint.s…"   39 hours ago        Up 15 minutes       0.0.0.0:3306->3306/tcp, 33060/tcp   crud_mysql_1
 ```
 
 ### Acessar container PHP para configuração do projeto
-```docker exec -it crud_php_1 bash```
+```docker exec -it constanceteste_php_1 bash```
 
 ### Dar permissão 777 nos seguintes diretórios
 1. storage/app/public/upload/img/users
