@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Profiles\StoreRequest;
+use App\Http\Requests\Profiles\UpdateRequest;
 use App\Models\Profile;
 
 class ProfileController extends Controller
@@ -34,13 +36,11 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Profiles\StoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $this->executeDataValidateOnStore($request);
-
         try {
             $profile = new Profile();
             $profile->name = $request->get('name');
@@ -56,20 +56,6 @@ class ProfileController extends Controller
                 ->with('error', 'Não foi possível criar o registro!')
                 ->withInput($request->input());
         }
-    }
-
-    private function executeDataValidateOnStore(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|unique:profiles|max:255',
-            'description' => 'required|max:255'
-        ], [
-            'name.required' => 'O campo Nome do Perfil não pode ser vazio',
-            'name.unique' => 'O Nome do Perfil já existe cadastrado no sistema',
-            'name.max' => 'O Nome do Perfil não pode ter mais de 255 caracteres',
-            'description.required' => 'O campo Descrição do Perfil não pode ser vazio',
-            'description.max' => 'O Nome do Descrição não pode ter mais de 255 caracteres',
-        ]);
     }
 
     /**
@@ -89,14 +75,12 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Profiles\UpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdateRequest $request)
     {
-        $this->executeDataValidateOnUpdate($request);
-
         try {
             $profiles = new Profile();
             $profile = $profiles->find($request->input('id'));
@@ -111,19 +95,6 @@ class ProfileController extends Controller
             return redirect('/perfil/editar/' . $request->input('id'))
                 ->with('error', 'Não foi possível alterar o registro!');
         }
-    }
-
-    private function executeDataValidateOnUpdate(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required|max:255'
-        ], [
-            'name.required' => 'O campo Nome do Perfil não pode ser vazio',
-            'name.max' => 'O Nome do Perfil não pode ter mais de 255 caracteres',
-            'description.required' => 'O campo Descrição do Perfil não pode ser vazio',
-            'description.max' => 'A Descrição do Perfil não pode ter mais de 255 caracteres',
-        ]);
     }
 
     /**
