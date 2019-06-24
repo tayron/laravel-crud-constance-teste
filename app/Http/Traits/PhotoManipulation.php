@@ -111,7 +111,7 @@ trait PhotoManipulation
         }
     }
 
-    private function mountAndGetFilePath($namePhoto)
+    private function mountAndGetFilePath($namePhoto) : string
     {
         return storage_path(
             'app/public/' .

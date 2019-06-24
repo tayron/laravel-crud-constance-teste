@@ -117,6 +117,9 @@ Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebu
 
 #### 3) Teste unitário de pelo menos 3 funções;
 
+Foi atendido implementado a classe de teste que se encontra em tests/Unit/PhotoManipulationTest.php.
+Para executar o teste, execute o comando ```./vendor/bin/phpunit``` dentro do container PHP
+
 
 #### 4) Deploy em um repositório do github ou do bitbucket;
 
