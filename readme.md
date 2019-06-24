@@ -84,7 +84,6 @@ Migrated:  2019_06_22_204222_create_users_table
 * Nome do Banco: Projeto
 
 
-```
 ### Premissas atendidas
 1. Dever ter alguma alguma dependência via composer;
 Foi atendida usando a biblioteca: http://image.intervention.io/getting_started/installation ("intervention/image": "2.4")
