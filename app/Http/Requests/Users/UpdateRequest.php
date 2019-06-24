@@ -22,7 +22,7 @@ class UpdateRequest extends FormRequest
             'salary' => 'required|regex:/^\d{1,3}(?:\.\d{3})*?,\d{2}/'
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -39,5 +39,5 @@ class UpdateRequest extends FormRequest
             'salary.required' => 'O Valor do Salário deve ser informado',
             'salary.regex' => 'O Valor do Salário deve ser no formato 00,00 ou 0.000,00'
         ];
-    }    
+    }
 }

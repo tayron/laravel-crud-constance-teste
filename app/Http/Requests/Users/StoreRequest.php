@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
             'photo' => 'required',
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -43,5 +43,5 @@ class StoreRequest extends FormRequest
             'salary.regex' => 'O Valor do Salário deve ser no formato 00,00 ou 0.000,00',
             'photo.required' => 'O campo Foto é obrigatório',
         ];
-    }    
+    }
 }

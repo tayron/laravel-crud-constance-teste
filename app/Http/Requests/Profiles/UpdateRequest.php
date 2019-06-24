@@ -17,7 +17,7 @@ class UpdateRequest extends FormRequest
             'description' => 'required|max:255'
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -26,5 +26,5 @@ class UpdateRequest extends FormRequest
             'description.required' => 'O campo Descrição do Perfil não pode ser vazio',
             'description.max' => 'A Descrição do Perfil não pode ter mais de 255 caracteres'
         ];
-    }    
+    }
 }

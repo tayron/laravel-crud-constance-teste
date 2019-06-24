@@ -115,6 +115,11 @@ Agora em seguida vamos validar as classes com os comandos:
 1. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php```
 2. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php```
 3. ```php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php```
+4. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/StoreRequest.php```
+5. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/UpdateRequest.php```
+6. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Users/StoreRequest.php```
+7. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Users/UpdateRequest.php```
+
 
 A saída dos comandos acima deverá ser:
 ```
@@ -124,6 +129,15 @@ root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Control
 Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php
 Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/StoreRequest.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/UpdateRequest.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Users/StoreRequest.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Users/UpdateRequest.php
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+
 ```
 
 #### 3) Teste unitário de pelo menos 3 funções;
