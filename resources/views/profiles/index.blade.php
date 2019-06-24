@@ -23,21 +23,21 @@
                 <tbody>
                     @foreach($listProfiles as $profile)
                     <tr>
-                        <td>{{$profile->id}}</td>
-                        <td>{{$profile->name}}</td>
-                        <td>{{$profile->description}}</td>
+                        <td>{{$profile->getId()}}</td>
+                        <td>{{$profile->getName()}}</td>
+                        <td>{{$profile->getDescription()}}</td>
                         <td class="actions">
                             <div class="btn-group">
-                                <a href="{{url('/perfil/editar/' . $profile->id)}}" class="btn btn-info btn-sm" title="Editar">
+                                <a href="{{url('/perfil/editar/' . $profile->getId())}}" class="btn btn-info btn-sm" title="Editar">
                                     Editar
                                 </a>
-                                <form name="post_{{$profile->id}}" style="display:none;" method="post" action="{{url('/perfil/excluir/')}}">
+                                <form name="post_{{$profile->getId()}}" style="display:none;" method="post" action="{{url('/perfil/excluir/')}}">
                                     {{csrf_field()}}
-                                    <input type="hidden" name="id" value="{{$profile->id}}">
+                                    <input type="hidden" name="id" value="{{$profile->getId()}}">
                                 </form>
                                 
-                                <a href="#" class="btn btn-danger btn-sm" title="Excluir" onclick="if (confirm('Tem certeza que deseja excluir o registro # {{$profile->id}}?')) {
-                                        document.post_{{$profile->id}}.submit();
+                                <a href="#" class="btn btn-danger btn-sm" title="Excluir" onclick="if (confirm('Tem certeza que deseja excluir o registro # {{$profile->getId()}}?')) {
+                                        document.post_{{$profile->getId()}}.submit();
                                             }
                                             event.returnValue = false;
                                             return false;">

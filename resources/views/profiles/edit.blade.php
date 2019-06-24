@@ -22,21 +22,21 @@
         
         <form method="POST" action="{{ route('perfil_atualizar') }}">
             {{csrf_field()}}
-            <input type="hidden" name="id" value="{{$profile->id}}" />            
+            <input type="hidden" name="id" value="{{$profile->getId()}}" />            
 
             <div class="row">
                 
                 <div class="col-xl-6 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{$profile->name}}" placeholder="Informe aqui o nome do Perfil"/>
+                        <input type="text" class="form-control" id="name" name="name" value="{{$profile->getName()}}" placeholder="Informe aqui o nome do Perfil"/>
                     </div>                    
                 </div>
                 
                 <div class="col-xl-6 col-md-6 com-sm-12">
                     <div class="form-group">    
                         <label for="description">Descrição:</label>
-                        <input type="text" class="form-control" id="description" name="description" value="{{$profile->description}}" placeholder="Informe aqui a descrição do Perfil"/>
+                        <input type="text" class="form-control" id="description" name="description" value="{{$profile->getDescription()}}" placeholder="Informe aqui a descrição do Perfil"/>
                     </div>                    
                 </div>                              
             </div>
