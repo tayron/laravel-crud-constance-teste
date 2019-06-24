@@ -57,6 +57,10 @@ aff4e01cc9e7        mysql:5.7           "docker-entrypoint.s…"   39 hours ago 
 ### Acessar container PHP para configuração do projeto
 ```docker exec -it crud_php_1 bash```
 
+### Dar permissão 777 nos seguintes diretórios
+1. storage/app/public/upload/img/users
+2. storage/logs
+
 ### Instalar as dependências do projeto
 ```composer install -vv```
 
