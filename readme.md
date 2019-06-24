@@ -120,6 +120,20 @@ Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebu
 Foi atendido implementado a classe de teste que se encontra em tests/Unit/PhotoManipulationTest.php.
 Para executar o teste, execute o comando ```./vendor/bin/phpunit``` dentro do container PHP
 
+```
+A saída do comando acima deverá ser:
+
+root@28d6118b1b6a:/var/www/html# ./vendor/bin/phpunit
+Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
+PHPUnit 6.5.14 by Sebastian Bergmann and contributors.
+
+........                                                            8 / 8 (100%)
+
+Time: 530 ms, Memory: 16.00MB
+
+OK (8 tests, 8 assertions)
+```
+
 
 #### 4) Deploy em um repositório do github ou do bitbucket;
 
