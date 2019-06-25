@@ -128,24 +128,15 @@ deve-se executar os seguintes comandos:
 A saída dos comandos acima deverá ser:
 ```
 root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@28d6118b1b6a:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/StoreRequest.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/UpdateRequest.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Users/StoreRequest.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Http/Requests/Users/UpdateRequest.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Models/ApplicationModel.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Models/Profile.php
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
-php phpcs.phar --standard=PSR2 app/Models/User.php
+root@0ae994dfca31:/var/www/html# php phpcs.phar --standard=PSR2 app/Models/User.php
 ```
 
 #### 3) Teste unitário de pelo menos 3 funções;
@@ -157,7 +148,6 @@ A saída do comando acima deverá ser:
 
 ```
 root@28d6118b1b6a:/var/www/html# ./vendor/bin/phpunit
-Xdebug could not open the remote debug file '/var/www/html/logs/sitedocker_xdebug.log'.
 PHPUnit 6.5.14 by Sebastian Bergmann and contributors.
 
 ........                                                            8 / 8 (100%)
