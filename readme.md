@@ -87,12 +87,19 @@ The [public/storage] directory has been linked.
 ### Acessar projeto pelo Browser
 ```http://localhost```
 
-### Acesso ao banco de dados
-* localhost: mysql
-* usuário: root
-* senha: root
-* Porta: 3306
-* Nome do Banco: Projeto
+### Acesso ao banco de dados de dentro do container PHP
+* **localhost:** mysql
+* **usuário:** root
+* **senha:** root
+* **Porta:** 3306
+* **Nome do Banco:** Projeto
+
+### Acesso ao banco de dados fora dos containers Docker
+* **localhost:** localhost
+* **usuário:** root
+* **senha:** root
+* **Porta:** 3306
+* **Nome do Banco:** Projeto
 
 
 ### Premissas atendidas
