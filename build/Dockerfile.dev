@@ -66,7 +66,7 @@ RUN pecl install xdebug \
     && echo "xdebug.idekey=docker" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_host=conexao_externa" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_mode=req" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_log=/var/www/html/logs/sitedocker_xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini
+    && echo "xdebug.remote_log=/var/log/projeto_docker_xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 ###
 # END ONLY IN DEV
