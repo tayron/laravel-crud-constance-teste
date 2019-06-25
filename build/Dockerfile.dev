@@ -40,6 +40,11 @@ RUN apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+## PHP CS exemplo de utilização: php ~/phpcs.phar --standard=PSR2 src/Controller/PagesController.php 
+RUN cd ~ && curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+RUN pear install PHP_CodeSniffer
+RUN cd /var/www/html && composer global require "squizlabs/php_codesniffer=*"
+
 ###
 # ONLY IN DEV
 ###

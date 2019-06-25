@@ -104,24 +104,18 @@ Foi atendida usando a biblioteca: http://image.intervention.io/getting_started/i
 #### 2) Passar no php code sniffer com PSR-2: Coding Style Guide;
 
 Para validar se os controllers e a Trait estão dentro dentro das definições da psr2,
-deve-se acessar o container php e instalar CodeSniffer
+deve-se executar os seguintes comandos: 
 
-1. ```curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar```
-2. ```pear install PHP_CodeSniffer```
-3. ```composer global require "squizlabs/php_codesniffer=*"```
-
-Agora em seguida vamos validar as classes com os comandos:
-
-1. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php```
-2. ```php phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php```
-3. ```php phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php```
-4. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/StoreRequest.php```
-5. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/UpdateRequest.php```
-6. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Users/StoreRequest.php```
-7. ```php phpcs.phar --standard=PSR2 app/Http/Requests/Users/UpdateRequest.php```
-8. ```php phpcs.phar --standard=PSR2 app/Models/ApplicationModel.php```
-9. ```php phpcs.phar --standard=PSR2 app/Models/Profile.php```
-10. ```php phpcs.phar --standard=PSR2 app/Models/User.php```
+1. ```php ~/phpcs.phar --standard=PSR2 app/Http/Controllers/ProfileController.php```
+2. ```php ~/phpcs.phar --standard=PSR2 app/Http/Controllers/UserController.php```
+3. ```php ~/phpcs.phar --standard=PSR2 app/Http/Traits/PhotoManipulation.php```
+4. ```php ~/phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/StoreRequest.php```
+5. ```php ~/phpcs.phar --standard=PSR2 app/Http/Requests/Profiles/UpdateRequest.php```
+6. ```php ~/phpcs.phar --standard=PSR2 app/Http/Requests/Users/StoreRequest.php```
+7. ```php ~/phpcs.phar --standard=PSR2 app/Http/Requests/Users/UpdateRequest.php```
+8. ```php ~/phpcs.phar --standard=PSR2 app/Models/ApplicationModel.php```
+9. ```php ~/phpcs.phar --standard=PSR2 app/Models/Profile.php```
+10. ```php ~/phpcs.phar --standard=PSR2 app/Models/User.php```
 
 
 A saída dos comandos acima deverá ser:
