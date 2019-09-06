@@ -7,7 +7,7 @@ services:
             context: ./build
             dockerfile: Dockerfile.dev
         ports:
-            - '80:80'
+            - '81:80'
         depends_on:
             - mysql
         volumes:
