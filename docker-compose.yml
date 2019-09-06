@@ -16,7 +16,7 @@ services:
         image: mysql:5.7
         container_name: crud_mysql_1
         ports:
-            - "3306:3306"
+            - "3307:3306"
         volumes:
             - ~/mysql_docker/constance:/var/lib/mysql
             - "./build/backup-banco-dados:/database"
