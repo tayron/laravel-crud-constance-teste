@@ -2,6 +2,7 @@ version: '2'
 
 services:
     php:
+        container_name: constanceteste_php_1
         build:
             context: ./build
             dockerfile: Dockerfile.dev
@@ -13,6 +14,7 @@ services:
             - ./:/var/www/html
     mysql:
         image: mysql:5.7
+        container_name: crud_mysql_1
         ports:
             - "3306:3306"
         volumes:
