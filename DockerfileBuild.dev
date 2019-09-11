@@ -83,14 +83,14 @@ RUN usermod -u 1000 www-data
 RUN rm -rf /etc/nginx/conf.d/* \
     rm -f /etc/nginx/nginx.conf
 
-COPY ./nginx/nginx.conf /etc/nginx/
-COPY ./nginx/projeto.conf /etc/nginx/conf.d/
+COPY /build/nginx/nginx.conf /etc/nginx/
+COPY /build/nginx/projeto.conf /etc/nginx/conf.d/
 
 WORKDIR /var/www/html
 
-COPY ./../* /var/www/html
-COPY ./start.sh /scripts/start.sh
-COPY ./set_ip_externo_etc_host.sh /scripts/set_ip_externo_etc_host.sh
+COPY / /var/www/html
+COPY /build/start.sh /scripts/start.sh
+COPY /build/set_ip_externo_etc_host.sh /scripts/set_ip_externo_etc_host.sh
 
 RUN chmod -Rf 755 /scripts
 

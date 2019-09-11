@@ -4,7 +4,7 @@ services:
     php:
         container_name: constanceteste_php_1
         build:
-            context: ./build
+            context: ./
             dockerfile: DockerfileBuild.dev
         ports:
             - '82:80'
