@@ -88,6 +88,7 @@ COPY /build/nginx/projeto.conf /etc/nginx/conf.d/
 
 WORKDIR /var/www/html
 
+COPY / /var/www/html
 COPY /build/start.sh /scripts/start.sh
 COPY /build/set_ip_externo_etc_host.sh /scripts/set_ip_externo_etc_host.sh
 
