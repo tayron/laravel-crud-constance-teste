@@ -23,5 +23,3 @@ services:
         environment:
             MYSQL_DATABASE: projeto
             MYSQL_ROOT_PASSWORD: root
-volumes:
-    data:
