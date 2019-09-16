@@ -3,7 +3,7 @@ node {
   git url: 'https://github.com/tayron/constance-teste.git'
 
   stage 'build'
-  docker.build('constanceteste_php_1')
+  sh "docker-compose -f docker-compose-buld.yml up --build -d"
 
   stage 'deploy'
   sh './deploy.sh'
