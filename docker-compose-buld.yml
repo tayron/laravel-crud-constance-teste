@@ -24,5 +24,5 @@ services:
             MYSQL_DATABASE: projeto
             MYSQL_ROOT_PASSWORD: root
 volumes:
-  ./:
+  php:
     driver: local
