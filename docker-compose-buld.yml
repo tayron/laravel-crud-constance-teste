@@ -6,8 +6,6 @@ services:
         build:
             context: ./
             dockerfile: DockerfileBuild.dev
-        volumes:
-            - ./:/var/www/html            
         ports:
             - '82:80'
         depends_on:
