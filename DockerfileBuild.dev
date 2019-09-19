@@ -6,6 +6,7 @@ RUN apt-get update
 
 RUN apt-get install -y \
         net-tools \
+        libreadline-dev \
         lftp \
         nginx \
         vim \
