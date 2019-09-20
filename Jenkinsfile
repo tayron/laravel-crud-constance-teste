@@ -2,6 +2,9 @@ node {
   stage 'Baixando Projeto'
   git url: 'https://github.com/tayron/constance-teste.git'
 
+  stage 'Subindo container'
+  sh "docker-compose -f docker-compose-buld.yml up --build -d"
+  
   stage 'Baixando as dependências'  
   sh "docker exec constanceteste_php composer install"
   
