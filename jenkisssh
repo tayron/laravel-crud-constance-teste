@@ -1,0 +1,44 @@
+docker-compose -f docker-compose-buld.yml up --build -d
+
+docker exec constanceteste_php composer install --no-dev
+docker exec constanceteste_php php artisan migrate
+
+rm -rf ./deploy
+mkdir -p ./deploy
+
+docker cp constanceteste_php:/var/www/html/ ./deploy
+docker exec -t constanceteste_php rm -rf *
+
+docker stop constanceteste_php
+docker stop constanceteste_mysql
+
+
+rm -rf ./deploy/html/build
+rm -rf ./deploy/html/tests
+rm -rf ./deploy/html/.git
+rm -rf ./deploy/html/artisan
+rm -rf ./deploy/html/composer.json
+rm -rf ./deploy/html/composer.lock
+rm -rf ./deploy/html/docker-compose.yml
+rm -rf ./deploy/html/docker-compose-build.yml
+rm -rf ./deploy/html/phpcs.phar
+rm -rf ./deploy/html/package.json
+rm -rf ./deploy/html/Jenkinsfile
+rm -rf ./deploy/html/readme.md
+rm -rf ./deploy/html/webpack.mix.js
+rm -rf ./deploy/html/.env.example
+rm -rf ./deploy/html/.gitattributes
+rm -rf ./deploy/html/deploy.sh
+rm -rf ./deploy/html/index.nginx-debian.html
+
+FTP_ADDRESS='servidor'
+FTP_REMOTE_PATH='/public_html'
+FTP_USER='usuario'
+FTP_PASSWORD='senha'
+
+LOCAL_PATH='./deploy/html'
+
+export COMPOSER_MIRROR_PATH_REPOS=1
+
+lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_ADDRESS; set ssl:verify-certificate no; mirror --only-newer --reverse --delete --verbose $LOCAL_PATH $FTP_REMOTE_PATH --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+rm -rf ./deploy
