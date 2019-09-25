@@ -29,7 +29,7 @@ node {
   }
   
   stage ('deploy'){
-    sh "|lftp -e 'open ftp.site.com.br; user usuario senha; mirror -X .* -X .*/ --reverse --verbose --delete  ./deploy/html/ /public_html/; bye'"
+    sh "lftp -e 'open ftp.site.com.br; user usuario senha; mirror -X .* -X .*/ --reverse --verbose --delete  ./deploy/html/ /public_html/; bye'"
     sh "rm -rf ./deploy"
   }
 }
