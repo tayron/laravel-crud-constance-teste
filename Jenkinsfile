@@ -29,7 +29,7 @@ node {
   }
   
   stage ('deploy'){
-    sh "FTP_ADDRESS='endereco' && sshFTP_REMOTE_PATH='/public_html' && FTP_USER='usuario' && FTP_PASSWORD='senha' && LOCAL_PATH='./deploy/html' && export COMPOSER_MIRROR_PATH_REPOS=1 && lftp -c 'open -u $FTP_USER,$FTP_PASSWORD $FTP_ADDRESS; set ssl:verify-certificate no; mirror -Rnev $LOCAL_PATH $FTP_REMOTE_PATH'"
+    sh "|lftp -e 'open ftp.site.com.br; user usuario senha; mirror -X .* -X .*/ --reverse --verbose --delete  ./deploy/html/ /public_html/; bye'"
     sh "rm -rf ./deploy"
   }
 }
