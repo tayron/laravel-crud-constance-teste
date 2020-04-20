@@ -161,5 +161,3 @@ OK (8 tests, 8 assertions)
 #### 4) Deploy em um repositório do github ou do bitbucket;
 
 Foi atendido com código versionado no GitHub: https://github.com/tayron/constance-teste
-
-a
