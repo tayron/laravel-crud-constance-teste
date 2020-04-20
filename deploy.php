@@ -64,7 +64,7 @@ task('laravel:database:migrate', function() {
 
 task('laravel:rename:env_file', function() {
     run("sudo mv {{current_path}}/.env.production  {{deploy_path}}/shared/.env");
-});cd ~
+});
 
 
 task('build', function () {
