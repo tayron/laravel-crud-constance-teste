@@ -7,10 +7,10 @@ require 'recipe/laravel.php';
 env('branch','master');
 set('deploy_path', '/home/deploy');
 set('current_path', '/var/www/html');
-set('composer_install_path', '/home/ubuntu/libs/composer.phar');
+#set('composer_install_path', '/home/ubuntu/libs/composer.phar');
 
 // Project name
-set('application', 'ImoveSys');
+set('application', 'laravelCrudConstanceTeste');
 
 // Project repository
 set('repository', 'https://github.com/tayron/laravel-crud-constance-teste.git');
