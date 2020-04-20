@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 env('branch','master');
 set('deploy_path', '/home/deploy');
 set('current_path', '/var/www/html');
-#set('composer_install_path', '/home/ubuntu/libs/composer.phar');
+set('composer_install_path', '/home/ubuntu/libs/composer.phar');
 
 // Project name
 set('application', 'laravelCrudConstanceTeste');
@@ -27,14 +27,14 @@ add('writable_dirs', ['app/storage', 'app/storage/logs']);
 set('allow_anonymous_stats', false);
 
 // Hosts
-
+/*
 host('0.0.0.0')
     ->user('root')
     ->port(22)
     //->identityFile('pem-greensignal.pem')
     ->forwardAgent(true)
     ->multiplexing(true);
-
+*/
 // Tasks
 
 /*Tarefas que não funcionam*/
@@ -50,11 +50,11 @@ task('laravel:storage_dir', function() {
 });
 
 task('laravel:vendor:install', function() {
-    run("php composer install --working-dir='/var/www/html/demos/imove/current'");
+    run("composer install --working-dir='/var/www/html'");
 });
 
 task('laravel:vendor:update', function() {
-    run("php composer update --working-dir='/var/www/html/demos/imove/current'");
+    run("composer update --working-dir='/var/www/html'");
 });
 
 task('laravel:database:migrate', function() {
