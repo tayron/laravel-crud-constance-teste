@@ -162,4 +162,4 @@ OK (8 tests, 8 assertions)
 
 Foi atendido com código versionado no GitHub: https://github.com/tayron/constance-teste
 
-
+a
