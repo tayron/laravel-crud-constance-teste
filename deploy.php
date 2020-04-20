@@ -5,7 +5,7 @@ namespace Deployer;
 require 'recipe/laravel.php';
 
 env('branch','master');
-set('deploy_path', '/home/deploy');
+set('deploy_path', '/var/www/html');
 
 // Project name
 set('application', 'laravelCrudConstanceTeste');
