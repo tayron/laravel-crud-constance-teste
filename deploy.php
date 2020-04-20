@@ -6,8 +6,6 @@ require 'recipe/laravel.php';
 
 env('branch','master');
 set('deploy_path', '/home/deploy');
-#set('current_path', '/home/current_path');
-#set('composer_install_path', '/home/ubuntu/libs/composer.phar');
 
 // Project name
 set('application', 'laravelCrudConstanceTeste');
@@ -42,6 +40,7 @@ task('deploy:writable', function(){});
 task('artisan:migrate', function(){});
 task('deploy:assetic:dump', function(){});
 task('deploy:cache:warmup', function(){});
+task('laravel:vendors', function(){});
 /*Fim tarefas que não funcionam*/
 
 task('laravel:storage_dir', function() {
@@ -57,16 +56,7 @@ task('laravel:vendor:update', function() {
 });
 
 task('laravel:database:migrate', function() {
-
     run("cd {{release_path}} && php artisan migrate");
-});
-
-task('laravel:vendors', function(){
-    run("cp -r {{release_path}}/vendor /home/release");
-});
-
-task('laravel:copy:env_file', function() {
-    run("cp .env  /home/release/.env");
 });
 
 task('build', function () {
@@ -87,7 +77,6 @@ task('deploy',
         'laravel:database:migrate',
         'artisan:storage:link',
         'laravel:storage_dir',
-        'laravel:copy:env_file',
         'laravel:vendors',
         'cleanup',
         'deploy:unlock',
