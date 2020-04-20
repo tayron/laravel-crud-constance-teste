@@ -6,7 +6,7 @@ require 'recipe/laravel.php';
 
 env('branch','master');
 set('deploy_path', '/home/deploy');
-set('current_path', '/var/www/html');
+#set('current_path', '/home/current_path');
 #set('composer_install_path', '/home/ubuntu/libs/composer.phar');
 
 // Project name
@@ -40,32 +40,34 @@ host('0.0.0.0')
 /*Tarefas que não funcionam*/
 task('deploy:writable', function(){});
 task('artisan:migrate', function(){});
-task('deploy:vendors', function(){});
 task('deploy:assetic:dump', function(){});
 task('deploy:cache:warmup', function(){});
 /*Fim tarefas que não funcionam*/
 
 task('laravel:storage_dir', function() {
-    run("sudo chmod -R 777 {{deploy_path}}/shared/storage/");
+    run("chmod -R 777 {{deploy_path}}/shared/storage/");
 });
 
 task('laravel:vendor:install', function() {
-    run("composer install --working-dir='/var/www/html'");
+    run("composer install --working-dir='{{release_path}}'");
 });
 
 task('laravel:vendor:update', function() {
-    run("composer update --working-dir='/var/www/html'");
+    run("composer update --working-dir='{{release_path}}'");
 });
 
 task('laravel:database:migrate', function() {
 
-    run("php /var/www/html/artisan migrate");
+    run("cd {{release_path}} && php artisan migrate");
 });
 
-task('laravel:rename:env_file', function() {
-    run("sudo mv {{current_path}}/.env.production  {{deploy_path}}/shared/.env");
+task('laravel:vendors', function(){
+    run("cp -r {{release_path}}/vendor /home/release");
 });
 
+task('laravel:copy:env_file', function() {
+    run("cp .env  /home/release/.env");
+});
 
 task('build', function () {
     run('cd {{release_path}} && build');
@@ -85,7 +87,8 @@ task('deploy',
         'laravel:database:migrate',
         'artisan:storage:link',
         'laravel:storage_dir',
-        'laravel:rename:env_file',
+        'laravel:copy:env_file',
+        'laravel:vendors',
         'cleanup',
         'deploy:unlock',
         'success'
