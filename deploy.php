@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 env('branch','master');
 set('deploy_path', '/home/deploy');
 set('current_path', '/var/www/html');
-set('composer_install_path', '/home/ubuntu/libs/composer.phar');
+#set('composer_install_path', '/home/ubuntu/libs/composer.phar');
 
 // Project name
 set('application', 'laravelCrudConstanceTeste');
@@ -64,7 +64,8 @@ task('laravel:database:migrate', function() {
 
 task('laravel:rename:env_file', function() {
     run("sudo mv {{current_path}}/.env.production  {{deploy_path}}/shared/.env");
-});
+});cd ~
+
 
 task('build', function () {
     run('cd {{release_path}} && build');
