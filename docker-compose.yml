@@ -1,25 +1,8 @@
 version: '2'
 
 services:
-    php:
+    constanceteste_php_1:
         container_name: constanceteste_php_1
         build:
             context: ./build
             dockerfile: Dockerfile.dev
-        ports:
-            - '82:80'
-        depends_on:
-            - mysql
-        volumes:
-            - ./build/deploy:/var/www/html/deploy
-    mysql:
-        image: mysql:5.7
-        container_name: crud_mysql_1
-        ports:
-            - "3307:3306"
-        volumes:
-            - ~/mysql_docker/constance:/var/lib/mysql
-            - "./build/backup-banco-dados:/database"
-        environment:
-            MYSQL_DATABASE: projeto
-            MYSQL_ROOT_PASSWORD: root
