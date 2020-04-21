@@ -7,21 +7,13 @@ require 'recipe/laravel.php';
 set('application', 'my_project');
 set('http_user', 'root');
 set('writable_mode', 'chmod');
-
+set('allow_anonymous_stats', false);
 
 // Project repository
 set('repository', 'https://github.com/tayron/laravel-crud-constance-teste.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false); 
-
-// Shared files/dirs between deploys 
-#add('shared_files', ['.env']);
-#add('shared_dirs', ['storage']);
-
-// Writable dirs by web server 
-#add('writable_dirs', ['storage']);
-set('allow_anonymous_stats', false);
 
 // Path to deploy
 set('deploy_path', '/var/www/html');    
@@ -37,3 +29,4 @@ after('deploy:failed', 'deploy:unlock');
 // Migrate database before symlink new release.
 
 before('deploy:symlink', 'artisan:migrate');
+
