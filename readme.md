@@ -53,12 +53,6 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        constanceteste_php_1
 ```
 
-### Acessar container PHP para configuração do projeto
-```docker exec -it constanceteste_php_1 bash```
-
-### Acessar diretório /home
-``` cd /home ```
-
 ### Startar um servidor MySQL de sua preferencia e configurar os dados de conexão no arquivo .env
 ```
 DB_CONNECTION=mysql
@@ -69,9 +63,34 @@ DB_USERNAME=root
 DB_PASSWORD=yakTLS&70c52
 ```
 
-### Executar deployer para deploy e configuração do projeto
-```dep deploy && chmod 777 -R /var/www/html/shared/storage/```
+### Acessar container PHP para configuração do projeto
+```docker exec -it constanceteste_php_1 bash```
 
+### Acessar container e executar o comando abaixo para fazer o deploy do projeto
+```cd /home/projeto && dep deploy && cp .env /var/www/html/shared/storage/.env && chmod 777 -R /var/www/html/shared/storage/```
+
+A saída do comando acima será algo semelhante:
+
+```
+✈︎ Deploying master on localhost
+✔ Executing task deploy:prepare
+✔ Executing task deploy:lock
+✔ Executing task deploy:release
+✔ Executing task deploy:update_code
+✔ Executing task deploy:shared
+✔ Executing task deploy:vendors
+✔ Executing task deploy:writable
+✔ Executing task artisan:storage:link
+✔ Executing task artisan:view:cache
+✔ Executing task artisan:config:cache
+✔ Executing task artisan:optimize
+✔ Executing task artisan:migrate
+✔ Executing task deploy:symlink
+✔ Executing task deploy:unlock
+✔ Executing task cleanup
+Successfully deployed!
+
+```
 ### Acessar projeto pelo Browser, exemplo
 ```http://projeto.local```
 
