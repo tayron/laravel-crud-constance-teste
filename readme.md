@@ -51,56 +51,29 @@ em uma máquina linux, caso use Windows, talvez tenha que fazer alguns ajustes.
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
 28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        constanceteste_php_1
-aff4e01cc9e7        mysql:5.7           "docker-entrypoint.s…"   39 hours ago        Up 15 minutes       0.0.0.0:3306->3306/tcp, 33060/tcp   crud_mysql_1
 ```
 
 ### Acessar container PHP para configuração do projeto
 ```docker exec -it constanceteste_php_1 bash```
 
-### Dar permissão 777 nos seguintes diretórios
-1. storage/app/public/upload/img/users
-2. storage/logs
+### Acessar diretório /home
+``` cd /home ```
 
-### Instalar as dependências do projeto
-```composer install -vv```
-
-### Criar as tabelas do banco de dado
-```php artisan migrate```
-
-A saída do comando acima deverá ser
+### Startar um servidor MySQL de sua preferencia e configurar os dados de conexão no arquivo .env
 ```
-Migration table created successfully.
-Migrating: 2019_06_22_000000_create_profiles_table
-Migrated:  2019_06_22_000000_create_profiles_table
-Migrating: 2019_06_22_204222_create_users_table
-Migrated:  2019_06_22_204222_create_users_table
+DB_CONNECTION=mysql
+DB_HOST=servidor_mysql
+DB_PORT=3306
+DB_DATABASE=projeto
+DB_USERNAME=root
+DB_PASSWORD=yakTLS&70c52
 ```
 
-### Executar comando para permitir ao Laravel carregar imagem do diretório storage quando for feito upload
-``` php artisan storage:link ```
+### Executar deployer para deploy e configuração do projeto
+```dep deploy && chmod 777 -R /var/www/html/shared/storage/```
 
-A  saída do comando acima deverá ser
-```
-The [public/storage] directory has been linked.
-```
-
-### Acessar projeto pelo Browser
-```http://localhost```
-
-### Acesso ao banco de dados de dentro do container PHP
-* **localhost:** mysql
-* **usuário:** root
-* **senha:** root
-* **Porta:** 3306
-* **Nome do Banco:** Projeto
-
-### Acesso ao banco de dados fora dos containers Docker
-* **localhost:** localhost
-* **usuário:** root
-* **senha:** root
-* **Porta:** 3306
-* **Nome do Banco:** Projeto
-
+### Acessar projeto pelo Browser, exemplo
+```http://projeto.local```
 
 ### Premissas atendidas
 
