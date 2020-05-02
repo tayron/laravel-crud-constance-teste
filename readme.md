@@ -63,11 +63,8 @@ DB_USERNAME=root
 DB_PASSWORD=yakTLS&70c52
 ```
 
-### Acessar container PHP para configuração do projeto
-```docker exec -it constanceteste_php_1 bash```
-
-### Acessar container e executar o comando abaixo para fazer o deploy do projeto
-```cd /home/projeto && dep deploy && cp .env /var/www/html/shared/storage/.env && chmod 777 -R /var/www/html/shared/storage/```
+### Para realizar o deploy basta executar o comando
+```docker exec -it constanceteste_php_1 sh /home/deploy.sh```
 
 A saída do comando acima será algo semelhante:
 
