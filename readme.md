@@ -53,7 +53,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 28d6118b1b6a        crud_php            "docker-php-entrypoi…"   39 hours ago        Up 15 minutes       0.0.0.0:80->80/tcp, 9000/tcp        constanceteste_php_1
 ```
 
-### Startar um servidor MySQL de sua preferencia e configurar os dados de conexão no arquivo .env
+### Startar um servidor MySQL de sua preferencia e configurar os dados de conexão no arquivo docker-compose.yml
 ```
 DB_CONNECTION=mysql
 DB_HOST=servidor_mysql
