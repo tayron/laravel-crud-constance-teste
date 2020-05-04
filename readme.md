@@ -55,12 +55,17 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ### Startar um servidor MySQL de sua preferencia e configurar os dados de conexão no arquivo docker-compose.yml
 ```
-DB_CONNECTION=mysql
-DB_HOST=servidor_mysql
-DB_PORT=3306
-DB_DATABASE=projeto
-DB_USERNAME=root
-DB_PASSWORD=yakTLS&70c52
+- DB_CONNECTION=mysql
+- DB_HOST=servidor_mysql
+- DB_PORT=3306
+- DB_DATABASE=projeto
+- DB_USERNAME=root
+- DB_PASSWORD=yakTLS&70c52
+```
+
+### Configurar chave da sua conta Do New Relic no arquivo docker-compose.yml
+```
+- NEW_RELIC_LICENCE=Licença-aqui
 ```
 
 ### Para realizar o deploy basta executar o comando
