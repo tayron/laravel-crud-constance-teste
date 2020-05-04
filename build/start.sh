@@ -10,4 +10,8 @@ if [ -z "$(ls -A vendor)" ]; then
     composer install --no-suggest -q -o --no-interaction
 fi
 
+# Update the New Relic config for this environment
+echo "newrelic.appname=$NEW_RELIC_APP_NAME" >> /usr/local/etc/php/conf.d/newrelic.ini
+echo "newrelic.license=$NEW_RELIC_LICENCE" >> /usr/local/etc/php/conf.d/newrelic.ini
+
 php-fpm -D && nginx -g 'daemon off;'

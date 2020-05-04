@@ -51,14 +51,6 @@ RUN cd ~ && curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 RUN pear install PHP_CodeSniffer
 RUN cd /var/www/html && composer global require "squizlabs/php_codesniffer=*"
 
-###
-# ONLY IN DEV
-###
-RUN apt-get install -y \
-        mysql-client \
-        zip \
-    --no-install-recommends
-
 RUN pecl install xdebug \
     && echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/xdebug.ini \
@@ -74,9 +66,22 @@ RUN pecl install xdebug \
     && echo "xdebug.remote_mode=req" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_log=/var/log/projeto_docker_xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini
 
-###
-# END ONLY IN DEV
-###
+# Install New Relic
+RUN apt-get update
+RUN apt-get install -y gnupg
+RUN apt-get install -y gnupg2
+RUN apt-get install -y wget
+
+# Install New Relic
+RUN set -x && DEBIAN_FRONTEND=noninteractive \
+  && wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - \
+  && echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list \
+  && apt-get update \
+  && apt-get install -y newrelic-php5 \
+  && newrelic-install install \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY ./newrelic.ini /usr/local/etc/php/conf.d/newrelic.ini
 
 RUN apt-get purge --auto-remove -y \
     && apt-get clean \
