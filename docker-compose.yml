@@ -8,6 +8,7 @@ services:
             dockerfile: Dockerfile.dev
         volumes:
           - ./:/home/projeto
+          - ./build/deploy:/var/www/html
         environment:
             - APP_NAME=Laravel
             - APP_ENV=local
