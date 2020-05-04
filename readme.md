@@ -63,7 +63,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 - DB_PASSWORD=yakTLS&70c52
 ```
 
-### Configurar chave da sua conta Do New Relic no arquivo docker-compose.yml
+### Configurar chave da sua conta do New Relic no arquivo docker-compose.yml
 ```
 - NEW_RELIC_LICENCE=Licença-aqui
 ```
