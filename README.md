@@ -91,6 +91,7 @@ A saída do comando acima será algo semelhante:
 ✔ Executing task deploy:unlock
 ✔ Executing task cleanup
 Successfully deployed!
+```
 
 ### Para realizar o deploy basta executar o comando
 ```docker exec -it constanceteste_php_1 sh /home/rollback.sh```
