@@ -93,7 +93,7 @@ A saída do comando acima será algo semelhante:
 Successfully deployed!
 ```
 
-### Para realizar o deploy basta executar o comando
+### Para realizar o rollback basta executar o comando
 ```docker exec -it constanceteste_php_1 sh /home/rollback.sh```
 
 A saída do comando acima será algo semelhante:
