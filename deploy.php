@@ -38,11 +38,19 @@ task('rollback', function () {
         run("rm -rf {{deploy_path}}/releases/{$releases[0]}/");
 
 
-        writeln("<info>rollback</info> to {$releases[1]} release was <success>successful</success>");
+        writeln("Rollback to {$releases[1]} release was successful");
     } else {
         writeln("<error>no more releases you can revert to</error>");
     }
 });
+
+desc('Running unit test');
+task('test', function () {
+    runLocally('cd {{deploy_path}}/current/ && composer install --dev && php vendor/bin/phpunit');
+
+});
+
+after('deploy', 'test');
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
