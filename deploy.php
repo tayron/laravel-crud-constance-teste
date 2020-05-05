@@ -24,6 +24,26 @@ task('build', function () {
    run('cd {{release_path}} && build');
 });
 
+desc('Rollback to previous release');
+task('rollback', function () {
+    $releases = get('releases_list');
+
+    if (isset($releases[1])) {
+        $releaseDir = "{{deploy_path}}/releases/{$releases[1]}";
+
+        // Symlink to old release.
+        run("cd {{deploy_path}} && {{bin/symlink}} $releaseDir current");
+
+        // Remove release
+        run("rm -rf {{deploy_path}}/releases/{$releases[0]}/");
+
+
+        writeln("<info>rollback</info> to {$releases[1]} release was <success>successful</success>");
+    } else {
+        writeln("<error>no more releases you can revert to</error>");
+    }
+});
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 

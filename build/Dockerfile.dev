@@ -102,6 +102,7 @@ WORKDIR /var/www/html
 COPY ./start.sh /scripts/start.sh
 COPY ./set_ip_externo_etc_host.sh /scripts/set_ip_externo_etc_host.sh
 COPY ./deploy.sh /home/deploy.sh
+COPY ./rollback.sh /home/rollback.sh
 
 RUN chmod -Rf 755 /scripts
 
