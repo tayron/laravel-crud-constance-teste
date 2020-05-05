@@ -43,6 +43,7 @@ RUN apt-get install -y \
         libmcrypt-dev \
     && pecl install mcrypt-1.0.2 \
     && docker-php-ext-enable mcrypt
+#    && docker-php-ext-install opcache
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -50,21 +51,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN cd ~ && curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 RUN pear install PHP_CodeSniffer
 RUN cd /var/www/html && composer global require "squizlabs/php_codesniffer=*"
-
-RUN pecl install xdebug \
-    && echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "display_startup_errors = On" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "display_errors = On" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.var_display_max_depth = 5" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable = On" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_handler = dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.idekey=docker" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_host=conexao_externa" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_mode=req" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_log=/var/log/projeto_docker_xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install New Relic
 RUN apt-get update
@@ -81,8 +67,6 @@ RUN set -x && DEBIAN_FRONTEND=noninteractive \
   && newrelic-install install \
   && rm -rf /var/lib/apt/lists/*
 
-COPY ./newrelic.ini /usr/local/etc/php/conf.d/newrelic.ini
-
 RUN apt-get purge --auto-remove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
@@ -90,19 +74,27 @@ RUN apt-get purge --auto-remove -y \
 
 RUN usermod -u 1000 www-data
 
-# Configure nginx
 RUN rm -rf /etc/nginx/conf.d/* \
     rm -f /etc/nginx/nginx.conf
+
+RUN ln -snf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && echo America/Sao_Paulo > /etc/timezone
 
 COPY ./nginx/nginx.conf /etc/nginx/
 COPY ./nginx/projeto.conf /etc/nginx/conf.d/
 
-WORKDIR /var/www/html
+COPY ./php/php_dev.ini /usr/local/etc/php/conf.d/php.ini
+COPY ./php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+#COPY ./php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+COPY ./newrelic.ini /usr/local/etc/php/conf.d/newrelic.ini
+
+COPY ./deployer/deploy.sh /home/deploy.sh
+COPY ./deployer/rollback.sh /home/rollback.sh
 
 COPY ./start.sh /scripts/start.sh
 COPY ./set_ip_externo_etc_host.sh /scripts/set_ip_externo_etc_host.sh
-COPY ./deploy.sh /home/deploy.sh
-COPY ./rollback.sh /home/rollback.sh
+
+WORKDIR /var/www/html
 
 RUN chmod -Rf 755 /scripts
 
