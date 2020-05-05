@@ -24,7 +24,7 @@ class PhotoManipulationTest extends TestCase
         $this->setFileWidth($valueToTest);
         
         $this->fileWidth == $valueToTest
-            ? $this->assertTrue(false) : $this->assertTrue(false);
+            ? $this->assertTrue(true) : $this->assertTrue(false);
     }
 
     public function testSetFileHeightAssertTrue()
