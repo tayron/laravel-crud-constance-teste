@@ -52,6 +52,8 @@ RUN cd ~ && curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 RUN pear install PHP_CodeSniffer
 RUN cd /var/www/html && composer global require "squizlabs/php_codesniffer=*"
 
+RUN pecl install xdebug-2.6.0
+
 # Install New Relic
 RUN apt-get update
 RUN apt-get install -y gnupg
