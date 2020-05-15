@@ -1,14 +1,17 @@
-version: '2'
+version: '3'
 
 services:
-    constanceteste_php_1:
-        container_name: constanceteste_php_1
+    teste.constance.com.br:
+        container_name: teste.constance.com.br
+
         build:
             context: ./build
             dockerfile: Dockerfile.dev
+
         volumes:
           - ./:/home/projeto
           - ./build/deploy:/var/www/html
+
         environment:
             - APP_NAME=Laravel
             - APP_ENV=local
@@ -48,3 +51,14 @@ services:
 
             - NEW_RELIC_APP_NAME=laravel-crud-constance-teste 
             - NEW_RELIC_LICENCE=6aecc1f9d6dc11bb8406842a257a3c03122fNRAL
+
+        networks:
+            rede:
+                ipv4_address: 172.29.0.2
+
+networks:
+    rede:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.29.0.0/16
