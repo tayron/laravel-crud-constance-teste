@@ -50,7 +50,7 @@ services:
             - PUSHER_APP_CLUSTER=mt1
 
             - NEW_RELIC_APP_NAME=laravel-crud-constance-teste 
-            - NEW_RELIC_LICENCE=6aecc1f9d6dc11bb8406842a257a3c03122fNRAL
+            - NEW_RELIC_LICENCE=CHAVE_NEW_RELIC_AQUI
 
         networks:
             rede:
